@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 
 class ColorsApp {
-  static GetStorage getStorage = GetStorage();
-  static List colors = getStorage.read("colors");
   //الوان صفة ال main//{
   static Color premary = const Color(0xFF0000FF);
   static Color black = const Color(0xff000000);

@@ -20,7 +20,9 @@ class Start extends GetView<ChatPageCoIm> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Spacer(),
+          const Spacer(
+            flex: 4,
+          ),
           Container(
             height: 100,
             width: 100,
@@ -40,11 +42,11 @@ class Start extends GetView<ChatPageCoIm> {
             style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
-          const Spacer(),
+          const Spacer(
+            flex: 4,
+          ),
           const ResponsaveLayout(phone: PhoneStartChose(), decktop: DescktopStartChose()),
-          const SizedBox(
-            height: 10,
-          )
+          Spacer()
         ],
       ),
     );

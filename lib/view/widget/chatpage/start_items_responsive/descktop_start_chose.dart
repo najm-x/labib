@@ -25,7 +25,7 @@ class DescktopStartChose extends GetView<ChatPageCoIm> {
                 splashColor: ColorsApp.white,
                 highlightColor: ColorsApp.white,
                 onTap: () =>
-                    controller.onsend(" السؤال هو : ${StaticData.startItemsModel[index].body}   ", controller.typeBot),
+                    controller.onsend("${StaticData.startItemsModel[index].body}   "),
                 child: Container(
                   margin: const EdgeInsets.only(left: 10, bottom: 10),
                   padding: const EdgeInsets.all(3),
