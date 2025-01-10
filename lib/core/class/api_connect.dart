@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:labib/core/class/enum_states.dart';
 import 'package:http/http.dart' as http;
 import 'package:labib/core/constant/key.dart';
-import 'package:labib/data/static/prompts.dart';
+import 'package:labib/data/static/prompts.txt';
 import 'package:labib/data/model/message_model.dart';
 
 class ApiConnect {
