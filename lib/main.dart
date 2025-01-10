@@ -1,3 +1,4 @@
+import 'package:labib/core/constant/app_pages.dart';
 import 'package:labib/core/locallzition/language.dart';
 import 'package:labib/core/locallzition/language_co.dart';
 import 'package:labib/core/services/myservices.dart';
@@ -20,14 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Ask Najm Assistant",
+      title: "8".tr,
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
       translations: Language(),
       locale: languageCoIm.lang,
-      initialRoute: '/',
+      initialRoute: AppPages.init,
       getPages: [
-        GetPage(name: '/', page: () => SplashScreen()),
+        GetPage(name: AppPages.init, page: () => SplashScreen()),
         GetPage(
             name: '/labibpage',
             page: () => Chatpage(),

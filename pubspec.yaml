@@ -96,14 +96,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: fontb
-      fonts:
-        - asset: fonts/Tajawal-Bold.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
     - family: fontm
       fonts:
         - asset: fonts/Tajawal-Medium.ttf
+        - asset: fonts/Tajawal-Bold.ttf
+          weight: 700
+  
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

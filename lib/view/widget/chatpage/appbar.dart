@@ -39,7 +39,7 @@ class Appbardesing extends GetView<ChatPageCoIm> {
           ///العنوان///{
           Text(
             '5'.tr,
-            style: TextStyle(fontFamily: 'fontb', fontSize: 18, height: 0, color: ColorsApp.titlecolor),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, height: 0, color: ColorsApp.titlecolor),
           ),
 
           ///العنوان///}
@@ -48,8 +48,8 @@ class Appbardesing extends GetView<ChatPageCoIm> {
           ///الصورة//{
           Container(
             margin: const EdgeInsets.only(right: 10),
-            height: 40,
-            width: 40,
+            height: 35,
+            width: 35,
           ),
 
           ///الصورة//}

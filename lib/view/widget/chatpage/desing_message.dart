@@ -50,7 +50,7 @@ class DesingMessage extends GetView<ChatPageCoIm> {
                   type == 'user' ? nameUser : nameBot,
                   style: TextStyle(
                     fontSize: 16,
-                    fontFamily: 'fontb',
+                    fontWeight: FontWeight.bold,
                     color: ColorsApp.black,
                   ),
                 ),
@@ -58,7 +58,10 @@ class DesingMessage extends GetView<ChatPageCoIm> {
                     width: (co.width.value - ((co.width.value / 10) * 2)) - 39,
                     child: MarkdownBody(
                       data: message,
-                      styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+                      // styleSheet: MarkdownStyleSheet(),
+                      onTapLink: (text, href, title) {
+                        co.openurl(href) ;
+                      },
                     )),
                 type == 'user'
                     ? const SizedBox()
@@ -66,9 +69,6 @@ class DesingMessage extends GetView<ChatPageCoIm> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           _copyIcon(() => co.copytext(message)),
-                          message.contains(co.regExp)
-                              ? _linkIcon(() => co.openurl(co.regExp.firstMatch(message)![0].toString()))
-                              : const SizedBox()
                         ],
                       )
               ],
@@ -87,20 +87,6 @@ class DesingMessage extends GetView<ChatPageCoIm> {
           onPressed: onPressed,
           icon: Icon(
             UIcons.regularRounded.copy,
-            size: 18,
-            color: const Color(0xff999999),
-          )),
-    );
-  }
-
-  Widget _linkIcon(void Function()? onPressed) {
-    return SizedBox(
-      height: 20,
-      child: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: onPressed,
-          icon: Icon(
-            UIcons.regularRounded.link,
             size: 18,
             color: const Color(0xff999999),
           )),

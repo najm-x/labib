@@ -9,22 +9,21 @@ ThemeData appTheme() {
         titleLarge: TextStyle(
           fontSize: 20,
           color: ColorsApp.black,
-          fontFamily: 'fontb',
+          fontWeight: FontWeight.bold,
         ),
         titleSmall: TextStyle(
           fontSize: 14,
           color: ColorsApp.white,
-          fontFamily: 'fontb',
+          fontWeight: FontWeight.bold,
         ),
         bodyMedium: TextStyle(
-          fontSize: 12,
+          fontSize: 15,
           color: ColorsApp.black,
-          fontFamily: 'fontb',
+         
         ),
         bodySmall: TextStyle(
           fontSize: 12,
           color: ColorsApp.black,
-          fontFamily: 'fontm',
         ),
       ));
 }

@@ -28,7 +28,7 @@ class Start extends GetView<ChatPageCoIm> {
             width: 100,
             decoration: BoxDecoration(
                 color: Colors.white,
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(15),
                 boxShadow: const <BoxShadow>[
                   BoxShadow(color: Color.fromARGB(47, 0, 0, 0), blurRadius: 7, offset: Offset(0, 3))
                 ],
@@ -46,7 +46,7 @@ class Start extends GetView<ChatPageCoIm> {
             flex: 4,
           ),
           const ResponsaveLayout(phone: PhoneStartChose(), decktop: DescktopStartChose()),
-          Spacer()
+          const Spacer()
         ],
       ),
     );

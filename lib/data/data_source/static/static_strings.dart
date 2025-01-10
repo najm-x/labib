@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 class StaticData {
   static List<SocialModel> socialModel = [
     SocialModel(image: ImageAssets.call, url: LinksApp.whatsapp),
-    SocialModel(image: ImageAssets.github, url: LinksApp.github),
-    SocialModel(image: ImageAssets.linkedin, url: LinksApp.linkedin),
+    SocialModel(image: ImageAssets.web, url: LinksApp.email),
   ];
   static List<StartItemsModel> startItemsModel = [
     StartItemsModel(title: '19'.tr, body: '20'.tr),

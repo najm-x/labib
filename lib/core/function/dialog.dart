@@ -105,7 +105,7 @@ class TitleDialog extends StatelessWidget {
           color: ColorsApp.white,
           child: Text(
             str,
-            style: TextStyle(fontSize: 14, color: ColorsApp.black, fontFamily: 'fontb'),
+            style: TextStyle(fontSize: 14, color: ColorsApp.black, fontWeight: FontWeight.bold),
           ),
         ),
       ],
