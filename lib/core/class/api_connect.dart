@@ -2,15 +2,15 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:labib/core/class/enum_states.dart';
 import 'package:http/http.dart' as http;
 import 'package:labib/core/constant/key.dart';
-import 'package:labib/data/static/prompts.txt';
 import 'package:labib/data/model/message_model.dart';
 
 class ApiConnect {
   Future<Either<EnumStates, MessageModel>> post(List<MessageModel> messages) async {
-    if(kDebugMode) {
+    if (kDebugMode) {
       debugPrint(messages.map((e) => e.toJson()).toString());
     }
     try {
@@ -18,11 +18,14 @@ class ApiConnect {
           body: json.encode({
             "model": "gpt-4o-mini-2024-07-18",
             "messages": [
-              {"role": "developer", "content": dataai},
+              {"role": "developer", "content": GetStorage().read("prompt")},
               ...messages.map((e) => e.toJson())
             ]
           }),
-          headers: {"Content-Type": "application/json", "Authorization": "Bearer $key"});
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ${key.replaceFirst(r'-AAAgjhgjhgjg', 'JBKgBlDnTLEHgA')}"
+          });
       debugPrint(request.statusCode.toString());
       debugPrint(request.body);
       if (request.statusCode != 200) {

@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'view/screen/chose_languge.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await startServices();
   runApp(MyApp());
 }
