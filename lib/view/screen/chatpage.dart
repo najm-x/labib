@@ -22,75 +22,78 @@ class Chatpage extends StatelessWidget {
   Widget build(BuildContext context) {
     controller.width.value = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 1,
-        actions: const [Appbardesing()],
+      backgroundColor: ColorsApp.white,
+      appBar: _appBar(),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          GetBuilder<ChatPageCoIm>(builder: (co) {
+            return co.isStart == false ? _messagePage(co) : const Start();
+          }),
+          _bottom(),
+        ],
+        ////المكونات///]
       ),
-      body: Container(
-          height: double.maxFinite,
-          width: double.maxFinite,
-          color: ColorsApp.white,
-          child: Container(
-            color: ColorsApp.white,
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                GetBuilder<ChatPageCoIm>(builder: (co) {
-                  return co.isStart == false
-                      ? Bg(
-                          widget: SingleChildScrollView(
-                          controller: controller.scrollController,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              ListView.builder(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount: co.massege.length,
-                                  itemBuilder: (BuildContext context, int i) {
-                                    return DesingMessage(
-                                        type: co.massege[i].nameSender,
-                                        message: co.massege[i].message,
-                                        imageUser: ImageAssets.user,
-                                        imageBot: ImageAssets.logo,
-                                        nameUser: '6'.tr,
-                                        nameBot: '32'.tr,
-                                        index: i);
-                                  }),
-                              const SizedBox(
-                                height: 70,
-                              )
-                            ],
-                          ),
-                        ))
-                      : const Start();
-                }),
-                BottomBg(
-                  widget: GetBuilder<ChatPageCoIm>(
-                    builder: (co) => Row(
-                      textDirection: TextDirection.ltr,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        IconMoreOption(
-                          onPressed: () {
-                            controller.gotohome();
-                          },
-                        ),
-                        const TextFormFildCu(),
-                        ButtonSend(
-                          isShow: co.send,
-                        ),
-                        Loading(isShow: co.wait),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-              ////المكونات///]
-            ),
-          )),
     );
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 1,
+      actions: const [Appbardesing()],
+    );
+  }
+
+  Widget _messagePage(ChatPageCoIm co) {
+    return Bg(
+        widget: SingleChildScrollView(
+      controller: controller.scrollController,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: co.massege.length,
+              itemBuilder: (BuildContext context, int i) {
+                return DesingMessage(
+                    type: co.massege[i].nameSender,
+                    message: co.massege[i].message,
+                    imageUser: ImageAssets.user,
+                    imageBot: ImageAssets.logo,
+                    nameUser: '6'.tr,
+                    nameBot: '32'.tr,
+                    index: i);
+              }),
+          const SizedBox(
+            height: 70,
+          )
+        ],
+      ),
+    ));
+  }
+  Widget _bottom(){
+    return BottomBg(
+            widget: GetBuilder<ChatPageCoIm>(
+              builder: (co) => Row(
+                textDirection: TextDirection.ltr,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  IconMoreOption(
+                    onPressed: () {
+                      controller.gotohome();
+                    },
+                  ),
+                  const TextFormFildCu(),
+                  ButtonSend(
+                    isShow: co.send,
+                  ),
+                  Loading(isShow: co.wait),
+                ],
+              ),
+            ),
+          );
   }
 }

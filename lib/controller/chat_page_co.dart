@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:labib/core/constant/links_app.dart';
+import 'package:labib/core/class/enum_states.dart';
 import 'package:labib/core/function/note_dialog.dart';
 import 'package:labib/data/model/message_model.dart';
 import 'package:clipboard/clipboard.dart';
@@ -10,15 +10,15 @@ import 'package:labib/data/remote/chat_remote.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class ChatPageCo extends GetxController {
- void shownote();
- void sendDataMessageGemini(String message);
- void onsend(String message);
- void onSendData(String message);
- void onGetData(MessageModel val);
- void onGetDataError(String val);
- void gotohome();
- void openurl(String? urll);
- void copytext(String text);
+  void shownote();
+  void handelingSend(String message);
+  void onsend(String message);
+  void onSendData(String message);
+  void onGetData(MessageModel val);
+  void onGetDataError(String val);
+  void gotohome();
+  void openurl(String? urll);
+  void copytext(String text);
 }
 
 class ChatPageCoIm extends ChatPageCo {
@@ -30,20 +30,11 @@ class ChatPageCoIm extends ChatPageCo {
   List<MessageModel> massege = [];
   bool send = true;
   bool wait = false;
-  String question = '';
   final ScrollController scrollController = ScrollController();
   final ChatRemote chatRemote = ChatRemote();
-  final RegExp regExp =
-      RegExp(r'(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])');
-
-  ///////// assistantsTools ////// api
-
-  late LinksApp linksApp;
-
 
   @override
   void onInit() {
-    linksApp = LinksApp();
     textcntorol = TextEditingController();
     shownote();
     super.onInit();
@@ -58,14 +49,18 @@ class ChatPageCoIm extends ChatPageCo {
   }
 
   @override
- void sendDataMessageGemini(String message) async {
+  void handelingSend(String message) async {
     onSendData(message);
     try {
       var respons = await chatRemote.sendMessage(massege);
       if (respons is MessageModel) {
         onGetData(respons);
       } else {
-        onGetDataError('error');
+        onGetDataError(respons == EnumStates.network
+            ? "Check Your Internet"
+            : respons == EnumStates.cost
+                ? "تم تجاوز الحد المسموح الرجاء المحاولة لا حقا"
+                : "error try agin");
       }
     } catch (e) {
       if (kDebugMode) {
@@ -76,37 +71,37 @@ class ChatPageCoIm extends ChatPageCo {
   }
 
   @override
- void gotohome() {
+  void gotohome() {
     Get.offAllNamed('/');
   }
 
   @override
   Future<void> openurl(String? urll) async {
- if (urll!=null) {
+    if (urll != null) {
       Uri url = Uri.parse(urll);
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw Exception('Could not launch $url');
+      if (!await launchUrl(
+        url,
+        mode: LaunchMode.externalApplication,
+      )) {
+        throw Exception('Could not launch $url');
+      }
     }
- }
   }
 
   @override
- void copytext(String text) {
+  void copytext(String text) {
     FlutterClipboard.copy(text).then((value) {
       Get.snackbar('31'.tr, "30".tr);
     });
   }
 
   @override
- void onsend(message) async {
-    sendDataMessageGemini(message);
+  void onsend(message) async {
+    handelingSend(message);
   }
 
   @override
- void onGetData(MessageModel val) async {
+  void onGetData(MessageModel val) async {
     if (kDebugMode) {
       print(val);
     }
@@ -120,8 +115,8 @@ class ChatPageCoIm extends ChatPageCo {
   }
 
   @override
- void onSendData(String message) {
-     massege.add(MessageModel(nameSender: 'user', message: message));
+  void onSendData(String message) {
+    massege.add(MessageModel(nameSender: 'user', message: message));
     wait = true;
     send = false;
     isStart = false;
@@ -129,12 +124,12 @@ class ChatPageCoIm extends ChatPageCo {
   }
 
   @override
- void onGetDataError(String val) {
+  void onGetDataError(String val) {
     wait = false;
     send = true;
     Get.snackbar(
       'Erorr',
-      "try agian",
+      val,
     );
     textcntorol.clear();
     update();

@@ -32,13 +32,7 @@ class DesingMessage extends GetView<ChatPageCoIm> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 24,
-              width: 24,
-              child: CircleAvatar(
-                backgroundImage: AssetImage(type == 'user' ? imageUser : imageBot),
-              ),
-            ),
+            _icon(),
             const SizedBox(
               width: 15,
             ),
@@ -46,23 +40,8 @@ class DesingMessage extends GetView<ChatPageCoIm> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  type == 'user' ? nameUser : nameBot,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsApp.black,
-                  ),
-                ),
-                SizedBox(
-                    width: (co.width.value - ((co.width.value / 10) * 2)) - 39,
-                    child: MarkdownBody(
-                      data: message,
-                      // styleSheet: MarkdownStyleSheet(),
-                      onTapLink: (text, href, title) {
-                        co.openurl(href) ;
-                      },
-                    )),
+                _title(),
+                _message(co),
                 type == 'user'
                     ? const SizedBox()
                     : Row(
@@ -77,6 +56,38 @@ class DesingMessage extends GetView<ChatPageCoIm> {
         ),
       );
     });
+  }
+
+  Widget _icon() {
+    return SizedBox(
+      height: 24,
+      width: 24,
+      child: CircleAvatar(
+        backgroundImage: AssetImage(type == 'user' ? imageUser : imageBot),
+      ),
+    );
+  }
+
+  Widget _title() {
+    return Text(
+      type == 'user' ? nameUser : nameBot,
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: ColorsApp.black,
+      ),
+    );
+  }
+
+  Widget _message(ChatPageCoIm co) {
+    return SizedBox(
+        width: (co.width.value - ((co.width.value / 10) * 2)) - 39,
+        child: MarkdownBody(
+          data: message,
+          onTapLink: (text, href, title) {
+            co.openurl(href);
+          },
+        ));
   }
 
   Widget _copyIcon(void Function()? onPressed) {

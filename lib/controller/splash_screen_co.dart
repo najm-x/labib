@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:labib/core/constant/app_pages.dart';
 
 abstract class SplashScreenCo extends GetxController {
   starting();
@@ -7,14 +8,14 @@ abstract class SplashScreenCo extends GetxController {
 class SplashScreenCoIm extends SplashScreenCo {
   @override
   void onInit() {
-    starting() ;
+    starting();
     super.onInit();
   }
 
   @override
   starting() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offNamed('/choselang');
+      Get.offNamed(AppPages.splashScreen);
     });
   }
 }

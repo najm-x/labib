@@ -34,8 +34,7 @@ class ButtonSend extends GetView<ChatPageCoIm> {
             ),
             onPressed: () {
               if (controller.textcntorol.text.isNotEmpty) {
-                controller.onsend('${controller.question}');
-                // controller.test();
+                controller.onsend(controller.textcntorol.text);
               }
             },
           ),

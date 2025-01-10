@@ -1,6 +1,6 @@
 import 'package:labib/controller/chat_page_co.dart';
 import 'package:labib/core/constant/colors_app.dart';
-import 'package:labib/data/data_source/static/static_strings.dart';
+import 'package:labib/data/static/static_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

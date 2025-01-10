@@ -30,12 +30,12 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: AppPages.init, page: () => SplashScreen()),
         GetPage(
-            name: '/labibpage',
+            name: AppPages.chatPage,
             page: () => Chatpage(),
             transition: Transition.size,
             transitionDuration: const Duration(milliseconds: 500)),
         GetPage(
-            name: '/choselang',
+            name: AppPages.splashScreen,
             page: () => const ChoseLanguge(),
             transition: Transition.fadeIn,
             transitionDuration: const Duration(milliseconds: 500)),

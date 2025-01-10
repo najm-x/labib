@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import "package:get_storage/get_storage.dart";
+import 'package:labib/core/constant/app_pages.dart';
 
 abstract class LanguageCo extends GetxController {
   choseLang(String language);
@@ -20,7 +21,7 @@ class LanguageCoIm extends LanguageCo {
     lang = Locale(language);
     getstorage.remove('lang');
     getstorage.write('lang', language);
-    Get.offAllNamed('/labibpage');
+    Get.offAllNamed(AppPages.chatPage);
     Get.updateLocale(lang!);
   }
 }

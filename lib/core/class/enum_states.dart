@@ -3,4 +3,5 @@ enum EnumStates {
   loaded ,
   error ,
   network ,
+  cost,
 }
