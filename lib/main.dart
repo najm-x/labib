@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "8".tr,
+      title: "Labib",
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
       translations: Language(),
