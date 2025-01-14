@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:labib/data/remote/chat_remote.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 abstract class ChatPageCo extends GetxController {
   void shownote();
