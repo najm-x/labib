@@ -17,7 +17,6 @@ abstract class ChatPageCo extends GetxController {
   void onGetData(MessageModel val);
   void onGetDataError(String val);
   void gotohome();
-  void openurl(String? urll);
   void copytext(String text);
 }
 
@@ -75,18 +74,6 @@ class ChatPageCoIm extends ChatPageCo {
     Get.offAllNamed('/');
   }
 
-  @override
-  Future<void> openurl(String? urll) async {
-    if (urll != null) {
-      Uri url = Uri.parse(urll);
-      if (!await launchUrl(
-        url,
-        mode: LaunchMode.externalApplication,
-      )) {
-        throw Exception('Could not launch $url');
-      }
-    }
-  }
 
   @override
   void copytext(String text) {

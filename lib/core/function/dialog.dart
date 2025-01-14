@@ -1,10 +1,9 @@
-import 'package:labib/controller/chat_page_co.dart';
 import 'package:labib/core/constant/colors_app.dart';
+import 'package:labib/core/function/open_url.dart';
 import 'package:labib/data/static/static_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-ChatPageCoIm controller = Get.find();
 dialog(BuildContext context) {
   showDialog(
     context: context,
@@ -16,7 +15,7 @@ dialog(BuildContext context) {
         backgroundColor: ColorsApp.white,
         actions: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(top: 10, bottom: 5 , left: 10 , right: 10),    
             decoration: BoxDecoration(color: ColorsApp.greythree, borderRadius: BorderRadius.circular(6)),
             alignment: Alignment.center,
             child: Column(
@@ -73,9 +72,15 @@ dialog(BuildContext context) {
                                 ),
                             itemCount: StaticData.socialModel.length),
                       ),
+                   
                     ],
                   ),
                 ),
+                 SizedBox(
+                  height: 5,
+                 ),
+
+                   Center(child: OutlinedButton.icon(onPressed: ()=> openurl("https://labib-assistant.blogspot.com/p/privacy-policy.html"), label: const Text("privacy-policy")  , icon:const Icon( Icons.info) ,),)
               ],
             ),
           )
@@ -121,7 +126,7 @@ class ImageSocial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => controller.openurl(url),
+      onTap: () => openurl(url),
       child: Image.asset(
         image,
         height: 35,

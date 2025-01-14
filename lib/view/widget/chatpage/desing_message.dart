@@ -3,6 +3,7 @@ import 'package:labib/core/constant/colors_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
+import 'package:labib/core/function/open_url.dart';
 import 'package:uicons/uicons.dart';
 
 class DesingMessage extends GetView<ChatPageCoIm> {
@@ -85,7 +86,7 @@ class DesingMessage extends GetView<ChatPageCoIm> {
         child: MarkdownBody(
           data: message,
           onTapLink: (text, href, title) {
-            co.openurl(href);
+            openurl(href);
           },
         ));
   }
