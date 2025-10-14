@@ -8,6 +8,7 @@ class StaticData {
   static List<SocialModel> socialModel = [
     SocialModel(image: ImageAssets.call, url: LinksApp.whatsapp),
     SocialModel(image: ImageAssets.web, url: LinksApp.email),
+    SocialModel(image: ImageAssets.instagram, url: LinksApp.instagram),
   ];
   static List<StartItemsModel> startItemsModel = [
     StartItemsModel(title: '19'.tr, body: '20'.tr),

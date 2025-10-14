@@ -17,7 +17,7 @@ class ButtonDe extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 50),
-        width: double.maxFinite,
+        constraints: const BoxConstraints(maxWidth: 400),
         height: 40,
         decoration: BoxDecoration(
             color: ColorsApp.premary,

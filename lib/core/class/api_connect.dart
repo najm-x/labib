@@ -16,7 +16,7 @@ class ApiConnect {
     try {
       var request = await http.post(Uri.parse('https://api.openai.com/v1/chat/completions'),
           body: json.encode({
-            "model": "gpt-4o-mini-2024-07-18",
+            "model": "gpt-4o-mini",
             "messages": [
               {"role": "developer", "content": GetStorage().read("prompt")},
               ...messages.map((e) => e.toJson())

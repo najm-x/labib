@@ -15,7 +15,8 @@ dialog(BuildContext context) {
         backgroundColor: ColorsApp.white,
         actions: [
           Container(
-            padding: const EdgeInsets.only(top: 10, bottom: 5 , left: 10 , right: 10),    
+            constraints: const BoxConstraints(maxWidth: 500),
+            padding: const EdgeInsets.only(top: 10, bottom: 5, left: 10, right: 10),
             decoration: BoxDecoration(color: ColorsApp.greythree, borderRadius: BorderRadius.circular(6)),
             alignment: Alignment.center,
             child: Column(
@@ -72,15 +73,19 @@ dialog(BuildContext context) {
                                 ),
                             itemCount: StaticData.socialModel.length),
                       ),
-                   
                     ],
                   ),
                 ),
-                 SizedBox(
+                const SizedBox(
                   height: 5,
-                 ),
-
-                   Center(child: OutlinedButton.icon(onPressed: ()=> openurl("https://labib-assistant.blogspot.com/p/privacy-policy.html"), label: const Text("privacy-policy")  , icon:const Icon( Icons.info) ,),)
+                ),
+                Center(
+                  child: OutlinedButton.icon(
+                    onPressed: () => openurl("https://labib-assistant.blogspot.com/p/privacy-policy.html"),
+                    label: const Text("privacy-policy"),
+                    icon: const Icon(Icons.info),
+                  ),
+                )
               ],
             ),
           )

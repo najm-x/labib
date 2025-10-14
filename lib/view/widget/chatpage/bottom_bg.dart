@@ -11,7 +11,7 @@ class BottomBg extends GetView<ChatPageCoIm> {
     return GetX<ChatPageCoIm>(builder: (co) {
       return Container(
           padding: const EdgeInsets.all(5),
-          width: double.maxFinite,
+          constraints: const BoxConstraints(maxWidth: 700),
           margin: EdgeInsets.only(left: co.width.value / 20, right: co.width.value / 20, bottom: 20),
           decoration: BoxDecoration(
               color: const Color.fromARGB(255, 255, 255, 255),

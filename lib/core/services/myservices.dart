@@ -15,7 +15,7 @@ class MyServices extends GetxService {
   Future<String> _prompt() async {
     var response = await http
         .get(Uri.parse("https://raw.githubusercontent.com/najm-flutter/archive_SE/refs/heads/master/prompt.txt"));
-        debugPrint(response.body) ;
+    debugPrint(response.body);
     if (response.statusCode == 200) {
       return response.body;
     } else {
